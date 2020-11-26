@@ -5,13 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
-
-
 namespace DataAccess
 {
-    public class MovieDA:conexionbd
+   public class ActorDA:conexionbd
     {
-        public DataTable getMovies()
+
+        public DataTable Actors()
         {
 
             using (var db = getConnection())
@@ -20,7 +19,7 @@ namespace DataAccess
                 using (var command = new SqlCommand())
                 {
                     command.Connection = db;
-                    command.CommandText = "Movies";
+                    command.CommandText = "Actors";
                     command.CommandType = CommandType.StoredProcedure;
                     var reader = command.ExecuteReader();
                     var table = new DataTable();
@@ -28,42 +27,13 @@ namespace DataAccess
                     reader.Dispose();
 
                     return table;
-
-                }
-
-            }
-            
-        }
-        //agregar pelicula
-
-        public void addMovie(string title,string genre,DateTime releaseDate,Byte photo,string actors)
-        {
-
-            using(var db = getConnection())
-            {
-                db.Open();
-                using (var command = new SqlCommand())
-                {
-                    command.Connection = db;
-                    command.CommandText = "AddMovie";
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@title", title);
-                    command.Parameters.AddWithValue("@genres", genre);
-                    command.Parameters.AddWithValue("@releaseDate", releaseDate);
-                    command.Parameters.AddWithValue("@photo", photo);
-                    command.Parameters.AddWithValue("@actors", actors);
-
-                    //agregar metodo para foto
-
-                    command.ExecuteNonQuery();
-                    command.Parameters.Clear();
-
-                    
                 }
             }
         }
-        //editar pelicula
-        public void editMovie(int idMovie, string title, string genre, DateTime releaseDate, Byte photo, string actors)
+
+        //agregar actores
+
+        public void AddActor(string Name, DateTime birthDay, string gender,byte photo, string details)
         {
             using (var db = getConnection())
             {
@@ -71,16 +41,15 @@ namespace DataAccess
                 using (var command = new SqlCommand())
                 {
                     command.Connection = db;
-                    command.CommandText = "editMovie";
+                    command.CommandText = "AddActor";
                     command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@title", title);
-                    command.Parameters.AddWithValue("@genre", genre);
-                    command.Parameters.AddWithValue("@releaseDate", releaseDate);
+                    command.Parameters.AddWithValue("@Name", Name);
+                    command.Parameters.AddWithValue("@birthDay", birthDay);
+                    command.Parameters.AddWithValue("@gender", gender);
                     command.Parameters.AddWithValue("@photo", photo);
-                    command.Parameters.AddWithValue("@actors", actors);
-                    command.Parameters.AddWithValue("@idMovie", idMovie);
+                    command.Parameters.AddWithValue("@details", details);
 
-                    // metodo para la foto
+                    //metodo para la foto
 
                     command.ExecuteNonQuery();
                     command.Parameters.Clear();
@@ -89,9 +58,9 @@ namespace DataAccess
             }
 
         }
+        //editar actores
 
-        //eliminar pelicula
-        public void deleteMovie(int idMovie)
+        public void editActor(int idActor, string Name, DateTime birthDay, string gender, byte photo, string details)
         {
             using (var db = getConnection())
             {
@@ -99,9 +68,36 @@ namespace DataAccess
                 using (var command = new SqlCommand())
                 {
                     command.Connection = db;
-                    command.CommandText = "deleteMovie";
+                    command.CommandText = "editActor";
                     command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("idMovie", idMovie);
+                    command.Parameters.AddWithValue("@Name", Name);
+                    command.Parameters.AddWithValue("@birthDay", birthDay);
+                    command.Parameters.AddWithValue("@gender", gender);
+                    command.Parameters.AddWithValue("@photo", photo);
+                    command.Parameters.AddWithValue("@details", details);
+                    command.Parameters.AddWithValue("@idActor", idActor);
+
+                    //metodo para la foto
+                    command.ExecuteNonQuery();
+                    command.Parameters.Clear();
+
+                }
+            }
+
+        }
+        //eliminar actor
+
+        public void deleteActor(int idActor) {
+
+            using (var db = getConnection())
+            {
+                db.Open();
+                using (var command = new SqlCommand())
+                {
+                    command.Connection = db;
+                    command.CommandText = "DeleteMovie";
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@idActor", idActor);
                     command.ExecuteNonQuery();
                     command.Parameters.Clear();
                 }

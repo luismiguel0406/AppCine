@@ -1,14 +1,14 @@
 ﻿-- crear actores --
 create procedure AddActor
 
-@NameAutor varchar(50),
-@birthDate date,
+@Name varchar(50),
+@birthDay date,
 @gender varchar(20),
 @photo image,
 @details varchar(200)
 as 
 insert into actores 
-values(@NameAutor,@birthDate,@gender,@photo,@details)
+values(@Name,@birthDay,@gender,@photo,@details)
 
 --seleccionar actores
 create procedure Actors
@@ -19,13 +19,13 @@ select * from actores
 
 create procedure editActor
 @idActor int,
-@NameAutor varchar(50),
-@birthDate date,
+@Name varchar(50),
+@birthDay date,
 @gender varchar(20),
 @photo image,
 @details varchar(200)
 as
-update actores set NombreCompleto = @NameAutor,FechaNacimiento = @birthDate, Sexo = @gender,Foto = @photo, Detalles = @details
+update actores set NombreCompleto = @Name, FechaNacimiento = @birthDay, Sexo = @gender,Foto = @photo, Detalles = @details
 where id_actor = @idActor
 
 --eliminar actores
@@ -36,6 +36,8 @@ as
 delete from actores where id_actor = @idActor
 
 --*************PELICULAS*************************--
+
+--agregar peluculas--
 
 create procedure AddMovie 
 @title varchar(50),
