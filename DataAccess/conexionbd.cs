@@ -10,29 +10,13 @@ namespace DataAccess
 {
     public abstract class conexionbd
     {
-        protected SqlConnection conexion = new SqlConnection("Data Source =.;Initial Catalog = cinedb ;Integrated Security=true");
-
-
-        public SqlConnection abrirConexion()
+        protected SqlConnection getConnection()
         {
-
-            if (conexion.State ==ConnectionState.Closed)
-            {
-                conexion.Open();
-            }
-            return conexion;
+            return new SqlConnection("Data Source =.;Initial Catalog = cinedb ;Integrated Security=true");
         }
-        public SqlConnection cerrarConexion()
-        {
-
-            if (conexion.State==ConnectionState.Open)
-            {
-                conexion.Close();
-                
-            }
-            return conexion;
-        }
+        
+        
       }
-
+    
     
 }
