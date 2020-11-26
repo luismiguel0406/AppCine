@@ -1,0 +1,12 @@
+D:\Web\AppCine\Presentation\bin\Debug\Presentation.exe.config
+D:\Web\AppCine\Presentation\bin\Debug\Presentation.exe
+D:\Web\AppCine\Presentation\bin\Debug\Presentation.pdb
+D:\Web\AppCine\Presentation\obj\Debug\Presentation.csprojResolveAssemblyReference.cache
+D:\Web\AppCine\Presentation\obj\Debug\Presentation.Principal.resources
+D:\Web\AppCine\Presentation\obj\Debug\Presentation.Properties.Resources.resources
+D:\Web\AppCine\Presentation\obj\Debug\Presentation.csproj.GenerateResource.Cache
+D:\Web\AppCine\Presentation\obj\Debug\Presentation.exe
+D:\Web\AppCine\Presentation\obj\Debug\Presentation.pdb
+D:\Web\AppCine\Presentation\bin\Debug\DataAccess.dll
+D:\Web\AppCine\Presentation\bin\Debug\DataAccess.pdb
+D:\Web\AppCine\Presentation\obj\Debug\Presentation.CuMovies.resources

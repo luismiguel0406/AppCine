@@ -1,0 +1,5 @@
+D:\Web\AppCine\DataAccess\bin\Debug\DataAccess.dll
+D:\Web\AppCine\DataAccess\bin\Debug\DataAccess.pdb
+D:\Web\AppCine\DataAccess\obj\Debug\DataAccess.csprojResolveAssemblyReference.cache
+D:\Web\AppCine\DataAccess\obj\Debug\DataAccess.dll
+D:\Web\AppCine\DataAccess\obj\Debug\DataAccess.pdb

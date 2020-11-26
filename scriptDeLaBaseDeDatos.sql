@@ -37,7 +37,7 @@ delete from actores where id_actor = @idActor
 
 --*************PELICULAS*************************--
 
---agregar peluculas--
+--agregar peliculas--
 
 create procedure AddMovie 
 @title varchar(50),
