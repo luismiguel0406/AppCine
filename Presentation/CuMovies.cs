@@ -94,7 +94,19 @@ namespace Presentation
         private void btnEdit_Click(object sender, EventArgs e)
         {
             edit = true;
-            timerMovie.Start();
+            if (txtTitle.Text.Trim().Equals(""))
+            {
+                MessageBox.Show("Seleccione una fila", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (dgvMoviePanel.Height<=79)
+                {
+                    timerdgv.Start();
+                }
+            }
+            if (sideMoviePanel.Width<=183)
+            {
+                timerMovie.Start();
+            }
+           
         }
 
         private void timerMovie_Tick(object sender, EventArgs e)
@@ -151,6 +163,8 @@ namespace Presentation
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            cleanTxt();
+            edit = false;
             timerMovie.Start();
         }
 
@@ -199,6 +213,7 @@ namespace Presentation
                 MessageBox.Show("Done successfully", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dgvMovies.DataSource = movie.getMovies();
                 cleanTxt();
+                timerMovie.Start();
             }
             if (edit)
             {
@@ -212,6 +227,7 @@ namespace Presentation
                 dgvMovies.DataSource = movie.getMovies();
                 idMovie = 0;
                 cleanTxt();
+                timerMovie.Start();
             }
 
             
@@ -259,9 +275,14 @@ namespace Presentation
                 return;
             }
 
-            movie.deleteMovie(idMovie);
-            dgvMovies.DataSource = movie.getMovies();
-            cleanTxt();
+            DialogResult dialog = MessageBox.Show(" Are you sure?","Message",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+            if (dialog ==DialogResult.Yes)
+            {
+                movie.deleteMovie(idMovie);
+                dgvMovies.DataSource = movie.getMovies();
+                cleanTxt();
+            }
+            
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -274,6 +295,88 @@ namespace Presentation
 
         }
 
-       
+        private void cbGenre_MouseMove(object sender, MouseEventArgs e)
+        {
+            cbGenre.Items.Clear();
+            int rows = dgvMovies.RowCount;
+
+
+            for (int i = 0; i < rows; i++)
+            {
+                cbGenre.Items.Add(dgvMovies.Rows[i].Cells[2].Value.ToString());
+            }
+        }
+
+        private void cbGenre_TextChanged(object sender, EventArgs e)
+        {
+            //busqueda por lo que se escriba
+            if (cbGenre.Text != "")
+            {
+                dgvMovies.CurrentCell = null;
+                foreach (DataGridViewRow r in dgvMovies.Rows)
+                {
+                    r.Visible = false;
+                }
+                foreach (DataGridViewRow r in dgvMovies.Rows)
+                {
+                    foreach (DataGridViewCell c in r.Cells)
+                    {
+                        if ((c.Value.ToString().ToUpper()).IndexOf(cbGenre.Text.ToUpper()) == 0)
+                        {
+                            r.Visible = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+
+            else
+            {
+
+                dgvMovies.DataSource = movie.getMovies();
+            }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            edit = false;
+            cleanTxt();
+            if (sideMoviePanel.Width<=183)
+            {
+                timerMovie.Start();
+            }
+            
+        }
+
+        private void btnDelete_MouseMove(object sender, MouseEventArgs e)
+        {
+            btnDelete.BackColor = Color.Red;
+        }
+
+        private void btnDelete_MouseLeave(object sender, EventArgs e)
+        {
+            btnDelete.BackColor = Color.Transparent;
+        }
+
+        private void btnEdit_MouseMove(object sender, MouseEventArgs e)
+        {
+            btnEdit.BackColor = Color.Gold;
+        }
+
+        private void btnEdit_MouseLeave(object sender, EventArgs e)
+        {
+            btnEdit.BackColor = Color.Transparent;
+        }
+
+        private void btnAdd_MouseMove(object sender, MouseEventArgs e)
+        {
+            btnAdd.BackColor = Color.Green;
+        }
+
+        private void btnAdd_MouseLeave(object sender, EventArgs e)
+        {
+            btnAdd.BackColor = Color.Transparent;
+        }
     }
 }

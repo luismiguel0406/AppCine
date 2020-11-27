@@ -38,5 +38,15 @@ namespace Presentation
         {
             btnClose.BackColor = Color.Red;
         }
+
+        private void leftPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Principal_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
