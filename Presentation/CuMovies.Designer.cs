@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CuMovies));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.sideMoviePanel = new System.Windows.Forms.Panel();
             this.dtpReleaseDate = new System.Windows.Forms.DateTimePicker();
             this.btnSave = new System.Windows.Forms.Button();
@@ -119,6 +119,8 @@
             this.btnSave.TabIndex = 12;
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnSave.MouseLeave += new System.EventHandler(this.btnSave_MouseLeave);
+            this.btnSave.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnSave_MouseMove);
             // 
             // btnCancel
             // 
@@ -130,6 +132,8 @@
             this.btnCancel.TabIndex = 11;
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancel.MouseLeave += new System.EventHandler(this.btnCancel_MouseLeave);
+            this.btnCancel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnCancel_MouseMove);
             // 
             // btnOpen
             // 
@@ -260,7 +264,6 @@
             this.btnPlay.Size = new System.Drawing.Size(98, 68);
             this.btnPlay.TabIndex = 15;
             this.btnPlay.UseVisualStyleBackColor = false;
-//            this.btnPlay.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnActors
             // 
@@ -273,6 +276,8 @@
             this.btnActors.TabIndex = 14;
             this.btnActors.Text = "Actors";
             this.btnActors.UseVisualStyleBackColor = false;
+            this.btnActors.MouseLeave += new System.EventHandler(this.btnActors_MouseLeave);
+            this.btnActors.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnActors_MouseMove);
             // 
             // panel2
             // 
@@ -387,7 +392,6 @@
             this.lbtitle.Size = new System.Drawing.Size(56, 28);
             this.lbtitle.TabIndex = 10;
             this.lbtitle.Text = "Title";
-//            this.lbtitle.Click += new System.EventHandler(this.label8_Click);
             // 
             // pictureBox2
             // 
@@ -399,7 +403,6 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
-//            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // dgvMoviePanel
             // 
@@ -425,15 +428,14 @@
             this.dgvMovies.Name = "dgvMovies";
             this.dgvMovies.ReadOnly = true;
             this.dgvMovies.RowHeadersVisible = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvMovies.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvMovies.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvMovies.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMovies.Size = new System.Drawing.Size(739, 108);
             this.dgvMovies.TabIndex = 1;
             this.dgvMovies.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMovies_CellClick);
-//            this.dgvMovies.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMovies_CellContentClick);
             // 
             // panel1
             // 

@@ -102,7 +102,7 @@ namespace DataAccess
         }
 
         //obtener foto del actor
-        public byte[] getPhotoActor(int id, byte[] photo)
+        public byte[] getPhotoActor(int id, byte[]photo)
         {
             using (var db = getConnection())
             {
@@ -124,8 +124,6 @@ namespace DataAccess
                 }
 
             }
-
-
 
         }
     }

@@ -35,6 +35,12 @@ create procedure DeleteActor
 as
 delete from actores where id_actor = @idActor
 
+--obtener foto actor--
+
+create procedure getPhotoActor
+@idActor int
+as select Foto from actores where id_actor = @idActor
+
 --*************PELICULAS*************************--
 
 --agregar peliculas--

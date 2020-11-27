@@ -37,6 +37,7 @@
             this.btnMovieMenu = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.cuMovies1 = new Presentation.CuMovies();
+            this.cuActors1 = new Presentation.CuActors();
             this.topPanel.SuspendLayout();
             this.leftPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -139,12 +140,24 @@
             this.cuMovies1.TabIndex = 2;
             this.cuMovies1.Load += new System.EventHandler(this.cuMovies1_Load);
             // 
+            // cuActors1
+            // 
+            this.cuActors1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.cuActors1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cuActors1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.cuActors1.Location = new System.Drawing.Point(102, 31);
+            this.cuActors1.Margin = new System.Windows.Forms.Padding(4);
+            this.cuActors1.Name = "cuActors1";
+            this.cuActors1.Size = new System.Drawing.Size(922, 540);
+            this.cuActors1.TabIndex = 3;
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
             this.ClientSize = new System.Drawing.Size(1030, 571);
+            this.Controls.Add(this.cuActors1);
             this.Controls.Add(this.cuMovies1);
             this.Controls.Add(this.leftPanel1);
             this.Controls.Add(this.topPanel);
@@ -173,6 +186,7 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnMovieMenu;
         private System.Windows.Forms.Button button2;
+        private CuActors cuActors1;
     }
 }
 

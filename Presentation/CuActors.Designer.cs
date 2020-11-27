@@ -28,19 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CuActors));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvPanelActors = new System.Windows.Forms.Panel();
             this.topPanelDgvActors = new System.Windows.Forms.Panel();
             this.btnAdd = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.cbGenre = new System.Windows.Forms.ComboBox();
+            this.cbGender = new System.Windows.Forms.ComboBox();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dgvActors = new System.Windows.Forms.DataGridView();
             this.leftSidePanelActor = new System.Windows.Forms.Panel();
             this.rtMovies = new System.Windows.Forms.RichTextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -62,19 +62,21 @@
             this.lbActor = new System.Windows.Forms.Label();
             this.pbMainActor = new System.Windows.Forms.PictureBox();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
+            this.timerActor = new System.Windows.Forms.Timer(this.components);
+            this.dgvActors = new System.Windows.Forms.DataGridView();
             this.dgvPanelActors.SuspendLayout();
             this.topPanelDgvActors.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvActors)).BeginInit();
             this.leftSidePanelActor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbActor)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMainActor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvActors)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvPanelActors
             // 
-            this.dgvPanelActors.Controls.Add(this.topPanelDgvActors);
             this.dgvPanelActors.Controls.Add(this.dgvActors);
+            this.dgvPanelActors.Controls.Add(this.topPanelDgvActors);
             this.dgvPanelActors.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvPanelActors.Location = new System.Drawing.Point(0, 333);
             this.dgvPanelActors.Margin = new System.Windows.Forms.Padding(4);
@@ -86,7 +88,7 @@
             // 
             this.topPanelDgvActors.Controls.Add(this.btnAdd);
             this.topPanelDgvActors.Controls.Add(this.label8);
-            this.topPanelDgvActors.Controls.Add(this.cbGenre);
+            this.topPanelDgvActors.Controls.Add(this.cbGender);
             this.topPanelDgvActors.Controls.Add(this.btnEdit);
             this.topPanelDgvActors.Controls.Add(this.btnDelete);
             this.topPanelDgvActors.Controls.Add(this.txtSearch);
@@ -111,26 +113,32 @@
             this.btnAdd.TabIndex = 24;
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.btnAdd.MouseLeave += new System.EventHandler(this.btnAdd_MouseLeave);
+            this.btnAdd.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnAdd_MouseMove);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(375, 9);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(51, 17);
+            this.label8.Size = new System.Drawing.Size(56, 17);
             this.label8.TabIndex = 23;
-            this.label8.Text = "Genre:";
+            this.label8.Text = "Gender";
             // 
-            // cbGenre
+            // cbGender
             // 
-            this.cbGenre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.cbGenre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbGenre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.cbGenre.FormattingEnabled = true;
-            this.cbGenre.Location = new System.Drawing.Point(445, 4);
-            this.cbGenre.Name = "cbGenre";
-            this.cbGenre.Size = new System.Drawing.Size(128, 25);
-            this.cbGenre.TabIndex = 22;
+            this.cbGender.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.cbGender.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbGender.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.cbGender.FormattingEnabled = true;
+            this.cbGender.Items.AddRange(new object[] {
+            "Male",
+            "Female"});
+            this.cbGender.Location = new System.Drawing.Point(445, 4);
+            this.cbGender.Name = "cbGender";
+            this.cbGender.Size = new System.Drawing.Size(128, 25);
+            this.cbGender.TabIndex = 22;
+            this.cbGender.TextChanged += new System.EventHandler(this.cbGender_TextChanged);
             // 
             // btnEdit
             // 
@@ -144,6 +152,8 @@
             this.btnEdit.TabIndex = 20;
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            this.btnEdit.MouseLeave += new System.EventHandler(this.btnEdit_MouseLeave);
+            this.btnEdit.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnEdit_MouseMove);
             // 
             // btnDelete
             // 
@@ -157,6 +167,8 @@
             this.btnDelete.TabIndex = 21;
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.btnDelete.MouseLeave += new System.EventHandler(this.btnDelete_MouseLeave);
+            this.btnDelete.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnDelete_MouseMove);
             // 
             // txtSearch
             // 
@@ -186,29 +198,6 @@
             this.label1.Size = new System.Drawing.Size(49, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Actors";
-            // 
-            // dgvActors
-            // 
-            this.dgvActors.AllowUserToAddRows = false;
-            this.dgvActors.AllowUserToDeleteRows = false;
-            this.dgvActors.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
-            this.dgvActors.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.dgvActors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvActors.EnableHeadersVisualStyles = false;
-            this.dgvActors.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvActors.Location = new System.Drawing.Point(9, 62);
-            this.dgvActors.Margin = new System.Windows.Forms.Padding(4);
-            this.dgvActors.Name = "dgvActors";
-            this.dgvActors.ReadOnly = true;
-            this.dgvActors.RowHeadersVisible = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvActors.RowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvActors.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvActors.Size = new System.Drawing.Size(985, 141);
-            this.dgvActors.TabIndex = 2;
-            this.dgvActors.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvActors_CellClick);
             // 
             // leftSidePanelActor
             // 
@@ -261,6 +250,8 @@
             this.btnSave.TabIndex = 21;
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnSave.MouseLeave += new System.EventHandler(this.btnSave_MouseLeave);
+            this.btnSave.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnSave_MouseMove);
             // 
             // btnCancel
             // 
@@ -272,6 +263,8 @@
             this.btnCancel.TabIndex = 20;
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancel.MouseLeave += new System.EventHandler(this.btnCancel_MouseLeave);
+            this.btnCancel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnCancel_MouseMove);
             // 
             // btnOpen
             // 
@@ -425,7 +418,34 @@
             // 
             // openFileDialog2
             // 
-            this.openFileDialog2.FileName = "openFileDialog1";
+            this.openFileDialog2.FileName = "openFileDialog2";
+            // 
+            // timerActor
+            // 
+            this.timerActor.Tick += new System.EventHandler(this.timerActor_Tick);
+            // 
+            // dgvActors
+            // 
+            this.dgvActors.AllowUserToAddRows = false;
+            this.dgvActors.AllowUserToDeleteRows = false;
+            this.dgvActors.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.dgvActors.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.dgvActors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvActors.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvActors.EnableHeadersVisualStyles = false;
+            this.dgvActors.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvActors.Location = new System.Drawing.Point(0, 35);
+            this.dgvActors.Name = "dgvActors";
+            this.dgvActors.ReadOnly = true;
+            this.dgvActors.RowHeadersVisible = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvActors.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvActors.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvActors.Size = new System.Drawing.Size(922, 172);
+            this.dgvActors.TabIndex = 4;
+            this.dgvActors.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvActors_CellClick);
             // 
             // CuActors
             // 
@@ -444,13 +464,13 @@
             this.dgvPanelActors.ResumeLayout(false);
             this.topPanelDgvActors.ResumeLayout(false);
             this.topPanelDgvActors.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvActors)).EndInit();
             this.leftSidePanelActor.ResumeLayout(false);
             this.leftSidePanelActor.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbActor)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMainActor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvActors)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -458,7 +478,6 @@
         #endregion
 
         private System.Windows.Forms.Panel dgvPanelActors;
-        private System.Windows.Forms.DataGridView dgvActors;
         private System.Windows.Forms.Panel topPanelDgvActors;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel leftSidePanelActor;
@@ -476,7 +495,7 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox cbGenre;
+        private System.Windows.Forms.ComboBox cbGender;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.TextBox txtSearch;
@@ -489,5 +508,7 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog2;
         private System.Windows.Forms.Button btnShowMovies;
         private System.Windows.Forms.ListBox listBMovies;
+        private System.Windows.Forms.Timer timerActor;
+        private System.Windows.Forms.DataGridView dgvActors;
     }
 }

@@ -357,12 +357,42 @@ namespace Presentation
 
         private void btnAdd_MouseMove(object sender, MouseEventArgs e)
         {
-            btnAdd.BackColor = Color.Green;
+            btnAdd.BackColor = Color.Cyan;
         }
 
         private void btnAdd_MouseLeave(object sender, EventArgs e)
         {
             btnAdd.BackColor = Color.Transparent;
+        }
+
+        private void btnCancel_MouseMove(object sender, MouseEventArgs e)
+        {
+            btnCancel.BackColor = Color.Red;
+        }
+
+        private void btnCancel_MouseLeave(object sender, EventArgs e)
+        {
+            btnCancel.BackColor = Color.Transparent;
+        }
+
+        private void btnSave_MouseMove(object sender, MouseEventArgs e)
+        {
+            btnSave.BackColor = Color.Green;
+        }
+
+        private void btnSave_MouseLeave(object sender, EventArgs e)
+        {
+            btnSave.BackColor = Color.Transparent;
+        }
+
+        private void btnActors_MouseMove(object sender, MouseEventArgs e)
+        {
+            btnActors.BackColor = Color.Gold;
+        }
+
+        private void btnActors_MouseLeave(object sender, EventArgs e)
+        {
+            btnActors.BackColor = Color.Transparent;
         }
     }
 }

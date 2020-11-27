@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="controlNuevo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="controlNuevo.Designer.cs">
+      <DependentUpon>controlNuevo.cs</DependentUpon>
+    </Compile>
     <Compile Include="CuActors.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -66,6 +72,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="controlNuevo.resx">
+      <DependentUpon>controlNuevo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CuActors.resx">
       <DependentUpon>CuActors.cs</DependentUpon>
     </EmbeddedResource>

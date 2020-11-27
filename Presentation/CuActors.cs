@@ -14,7 +14,7 @@ namespace Presentation
 {
     public partial class CuActors : UserControl
     {
-        int panelwidth;
+        int panelActorWidth;
         bool hidden;
         int idActor;
         
@@ -25,14 +25,17 @@ namespace Presentation
         {
             InitializeComponent();
             lbActor.Parent = pbMainActor;
+
+            panelActorWidth = 406;
+            hidden = true;
         }
         private bool edit = false;
         ActorDA actors = new ActorDA();
 
         private void CuActors_Load(object sender, EventArgs e)
         {
-            dgvActors.DataSource = actors.getActors();
-            listBMovies.Hide();
+           dgvActors.DataSource = actors.getActors();
+           // listBMovies.Hide();
         }
         public void cleanTxt()
         {
@@ -57,12 +60,12 @@ namespace Presentation
 
             }
 
-            Stream mystream = openFileDialog2.OpenFile();
+            Stream mystream2 = openFileDialog2.OpenFile();
 
-            using (MemoryStream ms = new MemoryStream())
+            using (MemoryStream ms2 = new MemoryStream())
             {
-                mystream.CopyTo(ms);
-                file = ms.ToArray();
+                mystream2.CopyTo(ms2);
+                file = ms2.ToArray();
             }
         }
 
@@ -126,17 +129,17 @@ namespace Presentation
         {
             cleanTxt();
             edit = false;
-            //timerActor.Start();
+            timerActor.Start();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             edit = false;
             cleanTxt();
-           // if (sideMoviePanel.Width <= 183)
-           // {
-            //    timerMovie.Start();
-            //}
+            if (leftSidePanelActor.Width <= 406)
+            {
+                timerActor.Start();
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -167,16 +170,155 @@ namespace Presentation
                     timerdgv.Start();
                 }*/
             }
-           /* if (sideMoviePanel.Width <= 183)
+            if (leftSidePanelActor.Width <= 406)
             {
-                timerMovie.Start();
+                timerActor.Start();
             }
-            */
+            
+        }
+
+       
+
+        private void btnAdd_MouseMove(object sender, MouseEventArgs e)
+        {
+            btnAdd.BackColor = Color.Cyan;
+        }
+
+        private void btnAdd_MouseLeave(object sender, EventArgs e)
+        {
+            btnAdd.BackColor = Color.Transparent;
+        }
+
+        private void btnEdit_MouseMove(object sender, MouseEventArgs e)
+        {
+            btnEdit.BackColor = Color.Gold;
+        }
+
+        private void btnEdit_MouseLeave(object sender, EventArgs e)
+        {
+            btnEdit.BackColor = Color.Transparent;
+        }
+
+        private void btnDelete_MouseMove(object sender, MouseEventArgs e)
+        {
+            btnDelete.BackColor = Color.Red;
+        }
+
+        private void btnDelete_MouseLeave(object sender, EventArgs e)
+        {
+            btnDelete.BackColor = Color.Transparent;
+        }
+
+        private void btnCancel_MouseMove(object sender, MouseEventArgs e)
+        {
+            btnCancel.BackColor = Color.Red;
+        }
+
+        private void btnCancel_MouseLeave(object sender, EventArgs e)
+        {
+            btnCancel.BackColor = Color.Transparent;
+        }
+
+        private void btnSave_MouseMove(object sender, MouseEventArgs e)
+        {
+            btnSave.BackColor = Color.Green;
+        }
+
+        private void btnSave_MouseLeave(object sender, EventArgs e)
+        {
+            btnSave.BackColor = Color.Transparent;
+        }
+
+        private void cbGender_TextChanged(object sender, EventArgs e)
+        {
+            //busqueda por lo que se escriba
+            if (cbGender.Text != "")
+            {
+                dgvActors.CurrentCell = null;
+                foreach (DataGridViewRow r in dgvActors.Rows)
+                {
+                    r.Visible = false;
+                }
+                foreach (DataGridViewRow r in dgvActors.Rows)
+                {
+                    foreach (DataGridViewCell c in r.Cells)
+                    {
+                        if ((c.Value.ToString().ToUpper()).IndexOf(cbGender.Text.ToUpper()) == 0)
+                        {
+                            r.Visible = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+
+            else
+            {
+
+                dgvActors.DataSource = actors.getActors();
+            }
+        }
+
+        private void timerActor_Tick(object sender, EventArgs e)
+        {
+            if (hidden)
+            {
+                leftSidePanelActor.Width = leftSidePanelActor.Width + 30;
+                if (leftSidePanelActor.Width >= panelActorWidth)
+                {
+                    timerActor.Stop();
+                    hidden = false;
+                    this.Refresh();
+                }
+
+            }
+            else
+            {
+                leftSidePanelActor.Width = leftSidePanelActor.Width - 30;
+                if (leftSidePanelActor.Width <= 0)
+                {
+                    timerActor.Stop();
+                    hidden = true;
+                    this.Refresh();
+                }
+            }
         }
 
         private void dgvActors_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //editar
+            idActor = int.Parse(dgvActors.CurrentRow.Cells[0].Value.ToString());
+            txtNameActor.Text = dgvActors.CurrentRow.Cells[1].Value.ToString();
+
+            lbActor.Text = dgvActors.CurrentRow.Cells[1].Value.ToString();
+            dtpBirthday.Text = dgvActors.CurrentRow.Cells[2].Value.ToString();
+
+
+            if (dgvActors.CurrentRow.Cells[3].Value.ToString() == "Male")
+            {
+
+                rbMale.Checked = true;
+                rbFemale.Checked = false;
+            }
+            if (dgvActors.CurrentRow.Cells[3].Value.ToString() == "Female")
+            {
+                rbMale.Checked = false;
+                rbFemale.Checked = false;
+            }
+
+
+
+            //busco la foto en la base de datos
+            byte[] PhotoActor = new byte[0];
+
+            //obtengo la imagen
+
+            MemoryStream MS = new MemoryStream(actors.getPhotoActor(idActor, PhotoActor));
+            pbActor.Image = Bitmap.FromStream(MS);
+            pbMainActor.Image = Bitmap.FromStream(MS);
+
+
+            rtMovies.Text = dgvActors.CurrentRow.Cells[5].Value.ToString();
         }
     }
 }
