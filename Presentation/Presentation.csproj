@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CuActors.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CuActors.Designer.cs">
+      <DependentUpon>CuActors.cs</DependentUpon>
+    </Compile>
     <Compile Include="CuMovies.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -60,6 +66,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CuActors.resx">
+      <DependentUpon>CuActors.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CuMovies.resx">
       <DependentUpon>CuMovies.cs</DependentUpon>
     </EmbeddedResource>

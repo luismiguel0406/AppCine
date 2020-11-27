@@ -257,16 +257,8 @@ namespace Presentation
             }
         }
 
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dgvMovies_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
+     
+      
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (idMovie == 0)
@@ -285,15 +277,9 @@ namespace Presentation
             
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
+       
 
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void cbGenre_MouseMove(object sender, MouseEventArgs e)
         {

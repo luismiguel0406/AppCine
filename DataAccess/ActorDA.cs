@@ -11,7 +11,7 @@ namespace DataAccess
    public class ActorDA:conexionbd
     {
 
-        public DataTable Actors()
+        public DataTable getActors()
         {
 
             using (var db = getConnection())
@@ -34,7 +34,7 @@ namespace DataAccess
 
         //agregar actores
 
-        public void AddActor(string Name, DateTime birthDay, string gender,byte photo, string details)
+        public void AddActor(string Name, DateTime birthDay, string gender,byte[] photo, string details)
         {
             using (var db = getConnection())
             {
@@ -50,8 +50,6 @@ namespace DataAccess
                     command.Parameters.AddWithValue("@photo", photo);
                     command.Parameters.AddWithValue("@details", details);
 
-                    //metodo para la foto
-
                     command.ExecuteNonQuery();
                     command.Parameters.Clear();
 
@@ -61,7 +59,7 @@ namespace DataAccess
         }
         //editar actores
 
-        public void editActor(int idActor, string Name, DateTime birthDay, string gender, byte photo, string details)
+        public void editActor(int idActor, string Name, DateTime birthDay, string gender, byte[] photo, string details)
         {
             using (var db = getConnection())
             {
@@ -77,8 +75,6 @@ namespace DataAccess
                     command.Parameters.AddWithValue("@photo", photo);
                     command.Parameters.AddWithValue("@details", details);
                     command.Parameters.AddWithValue("@idActor", idActor);
-
-                    //metodo para la foto
                     command.ExecuteNonQuery();
                     command.Parameters.Clear();
 
@@ -103,6 +99,34 @@ namespace DataAccess
                     command.Parameters.Clear();
                 }
             }
+        }
+
+        //obtener foto del actor
+        public byte[] getPhotoActor(int id, byte[] photo)
+        {
+            using (var db = getConnection())
+            {
+                db.Open();
+                using (var command = new SqlCommand())
+                {
+                    byte[] result;
+                    command.Connection = db;
+                    command.CommandText = "getPhotoActor";
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@idActor", id);
+                    var reader = command.ExecuteReader();
+                    reader.Read();
+                    photo = (byte[])reader["Foto"];
+                    result = photo;
+                    command.Parameters.Clear();
+                    return result;
+
+                }
+
+            }
+
+
+
         }
     }
 }

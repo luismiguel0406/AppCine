@@ -33,9 +33,9 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.leftPanel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnMovieMenu = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.btnMovieMenu = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.cuMovies1 = new Presentation.CuMovies();
             this.topPanel.SuspendLayout();
             this.leftPanel1.SuspendLayout();
@@ -87,15 +87,20 @@
             this.leftPanel1.TabIndex = 1;
             this.leftPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.leftPanel1_Paint);
             // 
-            // button1
+            // button2
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(40, 33);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "..";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.Location = new System.Drawing.Point(4, 95);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(91, 33);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Actors";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // btnMovieMenu
             // 
@@ -112,20 +117,15 @@
             this.btnMovieMenu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnMovieMenu.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // button1
             // 
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(4, 95);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(91, 33);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Actors";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button2.UseVisualStyleBackColor = true;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(40, 33);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "..";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // cuMovies1
             // 
@@ -135,7 +135,7 @@
             this.cuMovies1.Location = new System.Drawing.Point(102, 31);
             this.cuMovies1.Margin = new System.Windows.Forms.Padding(4);
             this.cuMovies1.Name = "cuMovies1";
-            this.cuMovies1.Size = new System.Drawing.Size(924, 540);
+            this.cuMovies1.Size = new System.Drawing.Size(922, 540);
             this.cuMovies1.TabIndex = 2;
             this.cuMovies1.Load += new System.EventHandler(this.cuMovies1_Load);
             // 

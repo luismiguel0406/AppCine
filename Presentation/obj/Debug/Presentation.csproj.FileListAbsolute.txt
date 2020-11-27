@@ -10,3 +10,4 @@ D:\Web\AppCine\Presentation\obj\Debug\Presentation.pdb
 D:\Web\AppCine\Presentation\bin\Debug\DataAccess.dll
 D:\Web\AppCine\Presentation\bin\Debug\DataAccess.pdb
 D:\Web\AppCine\Presentation\obj\Debug\Presentation.CuMovies.resources
+D:\Web\AppCine\Presentation\obj\Debug\Presentation.CuActors.resources

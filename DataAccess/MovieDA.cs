@@ -55,8 +55,6 @@ namespace DataAccess
                     command.Parameters.AddWithValue("@photo", photo);
                     command.Parameters.AddWithValue("@actors", actors);
 
-                    //agregar metodo para foto
-
                     command.ExecuteNonQuery();
                     command.Parameters.Clear();
 
@@ -83,9 +81,6 @@ namespace DataAccess
                     command.Parameters.AddWithValue("@photo", photo);
                     command.Parameters.AddWithValue("@actors", actors);
                     command.Parameters.AddWithValue("@idMovie", idMovie);
-
-                    // metodo para la foto
-
                     command.ExecuteNonQuery();
                     command.Parameters.Clear();
 
