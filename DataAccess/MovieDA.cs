@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
+
 
 
 namespace DataAccess
@@ -35,10 +37,10 @@ namespace DataAccess
             
         }
         //agregar pelicula
-
-        public void addMovie(string title,string genre,DateTime releaseDate,Byte photo,string actors)
+        
+        public void addMovie(string title,string genre,DateTime releaseDate,byte[] photo,string actors)
         {
-
+                        
             using(var db = getConnection())
             {
                 db.Open();
@@ -63,8 +65,10 @@ namespace DataAccess
             }
         }
         //editar pelicula
-        public void editMovie(int idMovie, string title, string genre, DateTime releaseDate, Byte photo, string actors)
+        public void editMovie(int idMovie, string title, string genre, DateTime releaseDate, byte[] photo, string actors)
         {
+            photo = null;
+
             using (var db = getConnection())
             {
                 db.Open();
@@ -110,5 +114,31 @@ namespace DataAccess
 
         //imagen pelicula
 
+        public byte[] getPhotoMovie(int id,byte[]photo)
+        {
+            using (var db = getConnection())
+            {
+                db.Open();
+                using (var command = new SqlCommand())
+                {
+                    byte[] result;
+                    command.Connection = db;
+                    command.CommandText = "getPhotoMovie";
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@idMovie", id);
+                    var reader = command.ExecuteReader();
+                    reader.Read();
+                    photo = (byte[])reader["Foto"];
+                    result = photo;
+                    command.Parameters.Clear();
+                    return result;
+
+                }
+                
+            }
+            
+            
+
+        }
     }
 }

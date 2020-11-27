@@ -75,3 +75,10 @@ create procedure DeleteMovie
 @idMovie int
 as
 delete from peliculas where id_pelicula = @idMovie
+
+-- obtener foto--
+create procedure getPhotoMovie
+@idMovie int
+as
+select Foto from peliculas 
+where id_pelicula = @idMovie

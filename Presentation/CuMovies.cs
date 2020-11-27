@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DataAccess;
+using System.IO;
+using System.Data.SqlClient;
 
 namespace Presentation
 {
@@ -16,24 +18,45 @@ namespace Presentation
         int panelwidth;
         bool hidden;
         int idMovie;
+        //
+        int panelheight;
+        bool hiddenDgvPanel;
+
+        byte[] file = null;
+
         public CuMovies()
         {
             InitializeComponent();
-            panelwidth = sideMoviePanel.Width;
-            hidden = false;
-            
+
+            dgvMoviePanel.Height = 29;
+            sideMoviePanel.Width = 0;
+
+            panelwidth = 183;
+            hidden = true;
+            // bottom panel
+            panelheight = 108;
+            hiddenDgvPanel = true;
+
+            lbtitle.Parent = pictureBox2;
+            btnActors.Parent = pictureBox2;
                         
         }
         private bool edit = false;
         MovieDA movie = new MovieDA();
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
 
+        public void cleanTxt()
+        {
+            txtTitle.Clear();
+            txtGenres.Clear();
+            dtpReleaseDate.Value = DateTime.Now;
+            pbMovie.Image = null;
+            rtActors.Clear();
         }
 
         private void CuMovies_Load(object sender, EventArgs e)
         {
             dgvMovies.DataSource = movie.getMovies();
+             
             
         }
 
@@ -70,6 +93,7 @@ namespace Presentation
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            edit = true;
             timerMovie.Start();
         }
 
@@ -77,18 +101,18 @@ namespace Presentation
         {
             if (hidden)
             {
-                sideMoviePanel.Width = sideMoviePanel.Width + 10;
+                sideMoviePanel.Width = sideMoviePanel.Width + 30;
                 if (sideMoviePanel.Width >= panelwidth)
                 {
                     timerMovie.Stop();
-                    hidden = false;
+                    hidden = false;  
                     this.Refresh();
                 }
 
             }
             else
             {
-                sideMoviePanel.Width = sideMoviePanel.Width - 10; 
+                sideMoviePanel.Width = sideMoviePanel.Width - 30; 
                 if (sideMoviePanel.Width <= 0)
                 {
                     timerMovie.Stop();
@@ -102,14 +126,154 @@ namespace Presentation
         {
             idMovie = int.Parse(dgvMovies.CurrentRow.Cells[0].Value.ToString());
             txtTitle.Text = dgvMovies.CurrentRow.Cells[1].Value.ToString();
+
+            lbtitle.Text = dgvMovies.CurrentRow.Cells[1].Value.ToString();
+            lbtitle.Text.ToUpper();
+
             txtGenres.Text = dgvMovies.CurrentRow.Cells[2].Value.ToString();
             dtpReleaseDate.Text = dgvMovies.CurrentRow.Cells[3].Value.ToString();
 
-            byte[] fotoempleado = new byte[0];
+            //busco la foto en la base de datos
+            byte[] PhotoMovie = new byte[0];
 
+            //obtengo la imagen
 
+            MemoryStream MS = new MemoryStream(movie.getPhotoMovie(idMovie, PhotoMovie));
+            pbMovie.Image = Bitmap.FromStream(MS);
+            pictureBox2.Image = Bitmap.FromStream(MS);
+                       
 
             rtActors.Text = dgvMovies.CurrentRow.Cells[5].Value.ToString();
+
         }
+
+      
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            timerMovie.Start();
+        }
+
+        private void btnToggle_Click(object sender, EventArgs e)
+        {
+            timerdgv.Start();
+        }
+
+        private void timerdgv_Tick(object sender, EventArgs e)
+        {
+            if (hiddenDgvPanel)
+            {
+                dgvMoviePanel.Height = dgvMoviePanel.Height + 20;
+                if (dgvMoviePanel.Height >= panelheight)
+                {
+                    timerdgv.Stop();
+                    hiddenDgvPanel = false;
+                    this.Refresh();
+                }
+
+            }
+            else
+            {
+                dgvMoviePanel.Height = dgvMoviePanel.Height - 20;
+                if (dgvMoviePanel.Height <= 29)
+                {
+                    timerdgv.Stop();
+                    hiddenDgvPanel = true;
+                    this.Refresh();
+                }
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (edit==false)
+            {
+                if (txtTitle.Text.Trim().Equals(""))
+                {
+                    MessageBox.Show("movie must to have a title");
+                    return;
+                }
+
+
+                movie.addMovie(txtTitle.Text, txtGenres.Text, dtpReleaseDate.Value, file, rtActors.Text);
+                MessageBox.Show("Done successfully", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dgvMovies.DataSource = movie.getMovies();
+                cleanTxt();
+            }
+            if (edit)
+            {
+                if (txtTitle.Text.Trim().Equals(""))
+                {
+                    MessageBox.Show("movie must to have a title");
+                    return;
+                }
+                movie.editMovie(idMovie,txtTitle.Text, txtGenres.Text, dtpReleaseDate.Value, file, rtActors.Text);
+                MessageBox.Show("Done successfully", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dgvMovies.DataSource = movie.getMovies();
+                idMovie = 0;
+                cleanTxt();
+            }
+
+            
+           
+        }
+
+        private void btnOpen_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.InitialDirectory = "c:\\";
+            openFileDialog1.Filter = "JPEG(*.jpg)|*.jpg|bmp(*.bmp)|*.bmp|png(*.png)|*.png";
+            openFileDialog1.FilterIndex = 1;
+            openFileDialog1.RestoreDirectory = true;
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                pbMovie.Image = Image.FromFile(openFileDialog1.FileName);
+                
+
+            }
+
+            Stream mystream = openFileDialog1.OpenFile();
+
+            using (MemoryStream ms = new MemoryStream())
+            {
+                mystream.CopyTo(ms);
+                file = ms.ToArray();
+            }
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvMovies_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (idMovie == 0)
+            {
+                MessageBox.Show("Select a Movie","Message",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                return;
+            }
+
+            movie.deleteMovie(idMovie);
+            dgvMovies.DataSource = movie.getMovies();
+            cleanTxt();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 }

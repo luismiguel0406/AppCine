@@ -16,5 +16,27 @@ namespace Presentation
         {
             InitializeComponent();
         }
+
+        private void cuMovies1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+       
+
+        private void btnClose_MouseLeave(object sender, EventArgs e)
+        {
+            btnClose.BackColor = Color.Transparent;
+        }
+
+        private void btnClose_MouseMove(object sender, MouseEventArgs e)
+        {
+            btnClose.BackColor = Color.Red;
+        }
     }
 }

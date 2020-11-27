@@ -28,23 +28,41 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             this.topPanel = new System.Windows.Forms.Panel();
+            this.btnClose = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.leftPanel1 = new System.Windows.Forms.Panel();
-            this.panelPrinicipal = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
+            this.cuMovies1 = new Presentation.CuMovies();
             this.topPanel.SuspendLayout();
             this.leftPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // topPanel
             // 
+            this.topPanel.Controls.Add(this.btnClose);
             this.topPanel.Controls.Add(this.label1);
             this.topPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.topPanel.Location = new System.Drawing.Point(0, 0);
             this.topPanel.Name = "topPanel";
-            this.topPanel.Size = new System.Drawing.Size(1059, 31);
+            this.topPanel.Size = new System.Drawing.Size(962, 31);
             this.topPanel.TabIndex = 0;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
+            this.btnClose.Location = new System.Drawing.Point(926, 0);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(36, 31);
+            this.btnClose.TabIndex = 1;
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnClose.MouseLeave += new System.EventHandler(this.btnClose_MouseLeave);
+            this.btnClose.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnClose_MouseMove);
             // 
             // label1
             // 
@@ -61,35 +79,38 @@
             this.leftPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.leftPanel1.Location = new System.Drawing.Point(0, 31);
             this.leftPanel1.Name = "leftPanel1";
-            this.leftPanel1.Size = new System.Drawing.Size(40, 528);
+            this.leftPanel1.Size = new System.Drawing.Size(40, 540);
             this.leftPanel1.TabIndex = 1;
-            // 
-            // panelPrinicipal
-            // 
-            this.panelPrinicipal.AutoSize = true;
-            this.panelPrinicipal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelPrinicipal.Location = new System.Drawing.Point(40, 31);
-            this.panelPrinicipal.Name = "panelPrinicipal";
-            this.panelPrinicipal.Size = new System.Drawing.Size(1019, 528);
-            this.panelPrinicipal.TabIndex = 6;
             // 
             // button1
             // 
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(0, 6);
+            this.button1.Location = new System.Drawing.Point(0, 0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(40, 33);
             this.button1.TabIndex = 0;
             this.button1.Text = "..";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // cuMovies1
+            // 
+            this.cuMovies1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.cuMovies1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cuMovies1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.cuMovies1.Location = new System.Drawing.Point(40, 31);
+            this.cuMovies1.Margin = new System.Windows.Forms.Padding(4);
+            this.cuMovies1.Name = "cuMovies1";
+            this.cuMovies1.Size = new System.Drawing.Size(922, 540);
+            this.cuMovies1.TabIndex = 2;
+            this.cuMovies1.Load += new System.EventHandler(this.cuMovies1_Load);
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.ClientSize = new System.Drawing.Size(1059, 559);
-            this.Controls.Add(this.panelPrinicipal);
+            this.ClientSize = new System.Drawing.Size(962, 571);
+            this.Controls.Add(this.cuMovies1);
             this.Controls.Add(this.leftPanel1);
             this.Controls.Add(this.topPanel);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -103,7 +124,6 @@
             this.topPanel.PerformLayout();
             this.leftPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -112,8 +132,9 @@
         private System.Windows.Forms.Panel topPanel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel leftPanel1;
-        private System.Windows.Forms.Panel panelPrinicipal;
         private System.Windows.Forms.Button button1;
+        private CuMovies cuMovies1;
+        private System.Windows.Forms.Button btnClose;
     }
 }
 
