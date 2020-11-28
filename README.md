@@ -6,3 +6,6 @@ consta de un aplicacion de manejo de peliculas y actores utilizando las tecnolol
 *SQL server
 *C#
 *Net
+
+la experiencia al trabajar en la aplicacion fue placentera y exitante, me encanta idear y aceptar retos en el desarrollo.
+QUE VIVA LA PROGRAMACION!.
