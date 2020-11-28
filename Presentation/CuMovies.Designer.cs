@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CuMovies));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.sideMoviePanel = new System.Windows.Forms.Panel();
             this.dtpReleaseDate = new System.Windows.Forms.DateTimePicker();
             this.btnSave = new System.Windows.Forms.Button();
@@ -47,6 +47,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.PanelMovie = new System.Windows.Forms.Panel();
+            this.listBactors = new System.Windows.Forms.ListBox();
             this.btnActors = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -66,7 +67,6 @@
             this.timerMovie = new System.Windows.Forms.Timer(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.timerdgv = new System.Windows.Forms.Timer(this.components);
-            this.listBactors = new System.Windows.Forms.ListBox();
             this.sideMoviePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMovie)).BeginInit();
             this.PanelMovie.SuspendLayout();
@@ -252,6 +252,16 @@
             this.PanelMovie.Size = new System.Drawing.Size(739, 540);
             this.PanelMovie.TabIndex = 11;
             // 
+            // listBactors
+            // 
+            this.listBactors.BackColor = System.Drawing.Color.Gold;
+            this.listBactors.FormattingEnabled = true;
+            this.listBactors.ItemHeight = 17;
+            this.listBactors.Location = new System.Drawing.Point(144, 273);
+            this.listBactors.Name = "listBactors";
+            this.listBactors.Size = new System.Drawing.Size(169, 89);
+            this.listBactors.TabIndex = 13;
+            // 
             // btnActors
             // 
             this.btnActors.BackColor = System.Drawing.Color.Transparent;
@@ -389,7 +399,7 @@
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(739, 403);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
             // 
@@ -417,10 +427,10 @@
             this.dgvMovies.Name = "dgvMovies";
             this.dgvMovies.ReadOnly = true;
             this.dgvMovies.RowHeadersVisible = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvMovies.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvMovies.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvMovies.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMovies.Size = new System.Drawing.Size(739, 108);
             this.dgvMovies.TabIndex = 1;
@@ -473,16 +483,6 @@
             // 
             this.timerdgv.Interval = 30;
             this.timerdgv.Tick += new System.EventHandler(this.timerdgv_Tick);
-            // 
-            // listBactors
-            // 
-            this.listBactors.BackColor = System.Drawing.Color.Gold;
-            this.listBactors.FormattingEnabled = true;
-            this.listBactors.ItemHeight = 17;
-            this.listBactors.Location = new System.Drawing.Point(144, 273);
-            this.listBactors.Name = "listBactors";
-            this.listBactors.Size = new System.Drawing.Size(169, 89);
-            this.listBactors.TabIndex = 13;
             // 
             // CuMovies
             // 

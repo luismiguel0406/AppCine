@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CuActors));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CuActors));
             this.dgvPanelActors = new System.Windows.Forms.Panel();
+            this.dgvActors = new System.Windows.Forms.DataGridView();
             this.topPanelDgvActors = new System.Windows.Forms.Panel();
             this.btnAdd = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
@@ -63,14 +64,13 @@
             this.pbMainActor = new System.Windows.Forms.PictureBox();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.timerActor = new System.Windows.Forms.Timer(this.components);
-            this.dgvActors = new System.Windows.Forms.DataGridView();
             this.dgvPanelActors.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvActors)).BeginInit();
             this.topPanelDgvActors.SuspendLayout();
             this.leftSidePanelActor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbActor)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMainActor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvActors)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvPanelActors
@@ -83,6 +83,29 @@
             this.dgvPanelActors.Name = "dgvPanelActors";
             this.dgvPanelActors.Size = new System.Drawing.Size(922, 207);
             this.dgvPanelActors.TabIndex = 0;
+            // 
+            // dgvActors
+            // 
+            this.dgvActors.AllowUserToAddRows = false;
+            this.dgvActors.AllowUserToDeleteRows = false;
+            this.dgvActors.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.dgvActors.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.dgvActors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvActors.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvActors.EnableHeadersVisualStyles = false;
+            this.dgvActors.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvActors.Location = new System.Drawing.Point(0, 35);
+            this.dgvActors.Name = "dgvActors";
+            this.dgvActors.ReadOnly = true;
+            this.dgvActors.RowHeadersVisible = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvActors.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvActors.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvActors.Size = new System.Drawing.Size(922, 172);
+            this.dgvActors.TabIndex = 4;
+            this.dgvActors.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvActors_CellClick);
             // 
             // topPanelDgvActors
             // 
@@ -417,7 +440,7 @@
             this.pbMainActor.Location = new System.Drawing.Point(0, 0);
             this.pbMainActor.Name = "pbMainActor";
             this.pbMainActor.Size = new System.Drawing.Size(516, 333);
-            this.pbMainActor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbMainActor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbMainActor.TabIndex = 0;
             this.pbMainActor.TabStop = false;
             // 
@@ -428,29 +451,6 @@
             // timerActor
             // 
             this.timerActor.Tick += new System.EventHandler(this.timerActor_Tick);
-            // 
-            // dgvActors
-            // 
-            this.dgvActors.AllowUserToAddRows = false;
-            this.dgvActors.AllowUserToDeleteRows = false;
-            this.dgvActors.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
-            this.dgvActors.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.dgvActors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvActors.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvActors.EnableHeadersVisualStyles = false;
-            this.dgvActors.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvActors.Location = new System.Drawing.Point(0, 35);
-            this.dgvActors.Name = "dgvActors";
-            this.dgvActors.ReadOnly = true;
-            this.dgvActors.RowHeadersVisible = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvActors.RowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvActors.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvActors.Size = new System.Drawing.Size(922, 172);
-            this.dgvActors.TabIndex = 4;
-            this.dgvActors.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvActors_CellClick);
             // 
             // CuActors
             // 
@@ -467,6 +467,7 @@
             this.Size = new System.Drawing.Size(922, 540);
             this.Load += new System.EventHandler(this.CuActors_Load);
             this.dgvPanelActors.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvActors)).EndInit();
             this.topPanelDgvActors.ResumeLayout(false);
             this.topPanelDgvActors.PerformLayout();
             this.leftSidePanelActor.ResumeLayout(false);
@@ -475,7 +476,6 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMainActor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvActors)).EndInit();
             this.ResumeLayout(false);
 
         }
