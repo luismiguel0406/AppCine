@@ -1,4 +1,40 @@
-﻿-- crear actores --
+﻿
+
+--*******PASO 1 CREAR BASE DE DATOS EL BACK UP ESTA EN UN ARCHIVO APARTE***********--
+CREATE DATABASE cinedb
+
+USE cinedb
+
+GO
+-- tabla actores
+
+    CREATE TABLE actores (
+    [id_actor] [INT] IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	[NombreCompleto] [varchar](100) NOT NULL,
+	[FechaNacimiento] [date]  NULL,  
+	[Sexo] [varchar](20) NULL,
+	[Foto] [image] NULL,
+	[Detalles][varchar](max)NULL
+	
+)
+
+--tabla peliculas
+
+    CREATE TABLE peliculas (
+	[id_pelicula] [INT] IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	[Titulo] [varchar](50) NOT NULL,
+	[Genero] [varchar](20) NULL,
+	[FechaDeEstreno] [date] NULL,
+	[Foto] [image] NULL,
+	[Actores] [varchar] (200) NULL
+	
+	
+)
+--***PASO 2 PROCEDIMIENTOS ALMACENADOS*****----
+
+--Nombre de la base de datos : cinedb
+
+-- crear actores --
 create procedure AddActor
 
 @Name varchar(50),

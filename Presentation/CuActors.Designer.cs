@@ -86,6 +86,7 @@
             // 
             // topPanelDgvActors
             // 
+            this.topPanelDgvActors.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.topPanelDgvActors.Controls.Add(this.btnAdd);
             this.topPanelDgvActors.Controls.Add(this.label8);
             this.topPanelDgvActors.Controls.Add(this.cbGender);
@@ -107,9 +108,9 @@
             this.btnAdd.FlatAppearance.BorderSize = 0;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(706, 0);
+            this.btnAdd.Location = new System.Drawing.Point(704, 0);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(72, 35);
+            this.btnAdd.Size = new System.Drawing.Size(72, 33);
             this.btnAdd.TabIndex = 24;
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -146,9 +147,9 @@
             this.btnEdit.FlatAppearance.BorderSize = 0;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
-            this.btnEdit.Location = new System.Drawing.Point(778, 0);
+            this.btnEdit.Location = new System.Drawing.Point(776, 0);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(72, 35);
+            this.btnEdit.Size = new System.Drawing.Size(72, 33);
             this.btnEdit.TabIndex = 20;
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
@@ -161,9 +162,9 @@
             this.btnDelete.FlatAppearance.BorderSize = 0;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
-            this.btnDelete.Location = new System.Drawing.Point(850, 0);
+            this.btnDelete.Location = new System.Drawing.Point(848, 0);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(72, 35);
+            this.btnDelete.Size = new System.Drawing.Size(72, 33);
             this.btnDelete.TabIndex = 21;
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -201,6 +202,7 @@
             // 
             // leftSidePanelActor
             // 
+            this.leftSidePanelActor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.leftSidePanelActor.Controls.Add(this.rtMovies);
             this.leftSidePanelActor.Controls.Add(this.label6);
             this.leftSidePanelActor.Controls.Add(this.btnSave);
@@ -279,6 +281,7 @@
             // 
             // pbActor
             // 
+            this.pbActor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pbActor.Location = new System.Drawing.Point(268, 35);
             this.pbActor.Name = "pbActor";
             this.pbActor.Size = new System.Drawing.Size(100, 101);
@@ -410,9 +413,11 @@
             // pbMainActor
             // 
             this.pbMainActor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbMainActor.Image = ((System.Drawing.Image)(resources.GetObject("pbMainActor.Image")));
             this.pbMainActor.Location = new System.Drawing.Point(0, 0);
             this.pbMainActor.Name = "pbMainActor";
             this.pbMainActor.Size = new System.Drawing.Size(516, 333);
+            this.pbMainActor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbMainActor.TabIndex = 0;
             this.pbMainActor.TabStop = false;
             // 

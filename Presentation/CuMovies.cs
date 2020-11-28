@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -56,6 +57,7 @@ namespace Presentation
         private void CuMovies_Load(object sender, EventArgs e)
         {
             dgvMovies.DataSource = movie.getMovies();
+            listBactors.Hide();
              
             
         }
@@ -136,6 +138,8 @@ namespace Presentation
 
         private void dgvMovies_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            edit = true;
+            
             idMovie = int.Parse(dgvMovies.CurrentRow.Cells[0].Value.ToString());
             txtTitle.Text = dgvMovies.CurrentRow.Cells[1].Value.ToString();
 
@@ -207,8 +211,8 @@ namespace Presentation
                     MessageBox.Show("movie must to have a title");
                     return;
                 }
-
-
+                
+              
                 movie.addMovie(txtTitle.Text, txtGenres.Text, dtpReleaseDate.Value, file, rtActors.Text);
                 MessageBox.Show("Done successfully", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dgvMovies.DataSource = movie.getMovies();
@@ -222,6 +226,14 @@ namespace Presentation
                     MessageBox.Show("movie must to have a title");
                     return;
                 }
+                //obtengo la foto
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    pbMovie.Image.Save(ms, ImageFormat.Jpeg);
+                    file = ms.GetBuffer();
+                    
+                }
+
                 movie.editMovie(idMovie,txtTitle.Text, txtGenres.Text, dtpReleaseDate.Value, file, rtActors.Text);
                 MessageBox.Show("Done successfully", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dgvMovies.DataSource = movie.getMovies();
@@ -388,11 +400,13 @@ namespace Presentation
         private void btnActors_MouseMove(object sender, MouseEventArgs e)
         {
             btnActors.BackColor = Color.Gold;
+            listBactors.Show();
         }
 
         private void btnActors_MouseLeave(object sender, EventArgs e)
         {
             btnActors.BackColor = Color.Transparent;
+            listBactors.Hide();
         }
     }
 }

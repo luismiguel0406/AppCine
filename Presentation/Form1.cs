@@ -46,7 +46,30 @@ namespace Presentation
 
         private void Principal_Load(object sender, EventArgs e)
         {
+            cuActors1.Hide();
+            cuMovies1.Hide();
+        }
 
+        private void btnMovieMenu_Click(object sender, EventArgs e)
+        {
+            cuActors1.Hide();
+            cuActors1.SendToBack();
+            cuMovies1.Show();
+            cuMovies1.BringToFront();
+        }
+
+        private void btnActorMenu_Click(object sender, EventArgs e)
+        {
+            cuMovies1.Hide();
+            cuMovies1.SendToBack();
+            cuActors1.Show();
+            cuActors1.BringToFront();
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            cuActors1.Hide();
+            cuMovies1.Hide();
         }
     }
 }

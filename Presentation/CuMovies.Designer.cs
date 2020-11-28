@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CuMovies));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.sideMoviePanel = new System.Windows.Forms.Panel();
             this.dtpReleaseDate = new System.Windows.Forms.DateTimePicker();
             this.btnSave = new System.Windows.Forms.Button();
@@ -47,7 +47,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.PanelMovie = new System.Windows.Forms.Panel();
-            this.btnPlay = new System.Windows.Forms.Button();
             this.btnActors = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -67,6 +66,7 @@
             this.timerMovie = new System.Windows.Forms.Timer(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.timerdgv = new System.Windows.Forms.Timer(this.components);
+            this.listBactors = new System.Windows.Forms.ListBox();
             this.sideMoviePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMovie)).BeginInit();
             this.PanelMovie.SuspendLayout();
@@ -240,7 +240,7 @@
             // 
             // PanelMovie
             // 
-            this.PanelMovie.Controls.Add(this.btnPlay);
+            this.PanelMovie.Controls.Add(this.listBactors);
             this.PanelMovie.Controls.Add(this.btnActors);
             this.PanelMovie.Controls.Add(this.panel2);
             this.PanelMovie.Controls.Add(this.lbtitle);
@@ -251,19 +251,6 @@
             this.PanelMovie.Name = "PanelMovie";
             this.PanelMovie.Size = new System.Drawing.Size(739, 540);
             this.PanelMovie.TabIndex = 11;
-            // 
-            // btnPlay
-            // 
-            this.btnPlay.BackColor = System.Drawing.Color.Gainsboro;
-            this.btnPlay.FlatAppearance.BorderSize = 0;
-            this.btnPlay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPlay.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPlay.Image = ((System.Drawing.Image)(resources.GetObject("btnPlay.Image")));
-            this.btnPlay.Location = new System.Drawing.Point(351, 286);
-            this.btnPlay.Name = "btnPlay";
-            this.btnPlay.Size = new System.Drawing.Size(98, 68);
-            this.btnPlay.TabIndex = 15;
-            this.btnPlay.UseVisualStyleBackColor = false;
             // 
             // btnActors
             // 
@@ -281,6 +268,7 @@
             // 
             // panel2
             // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.btnAdd);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.cbGenre);
@@ -300,9 +288,9 @@
             this.btnAdd.FlatAppearance.BorderSize = 0;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(523, 0);
+            this.btnAdd.Location = new System.Drawing.Point(521, 0);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(72, 35);
+            this.btnAdd.Size = new System.Drawing.Size(72, 33);
             this.btnAdd.TabIndex = 17;
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -337,9 +325,9 @@
             this.btnEdit.FlatAppearance.BorderSize = 0;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
-            this.btnEdit.Location = new System.Drawing.Point(595, 0);
+            this.btnEdit.Location = new System.Drawing.Point(593, 0);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(72, 35);
+            this.btnEdit.Size = new System.Drawing.Size(72, 33);
             this.btnEdit.TabIndex = 13;
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
@@ -352,9 +340,9 @@
             this.btnDelete.FlatAppearance.BorderSize = 0;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
-            this.btnDelete.Location = new System.Drawing.Point(667, 0);
+            this.btnDelete.Location = new System.Drawing.Point(665, 0);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(72, 35);
+            this.btnDelete.Size = new System.Drawing.Size(72, 33);
             this.btnDelete.TabIndex = 14;
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -389,18 +377,19 @@
             this.lbtitle.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbtitle.Location = new System.Drawing.Point(15, 21);
             this.lbtitle.Name = "lbtitle";
-            this.lbtitle.Size = new System.Drawing.Size(56, 28);
+            this.lbtitle.Size = new System.Drawing.Size(19, 28);
             this.lbtitle.TabIndex = 10;
-            this.lbtitle.Text = "Title";
+            this.lbtitle.Text = ".";
             // 
             // pictureBox2
             // 
+            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(739, 403);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
             // 
@@ -428,10 +417,10 @@
             this.dgvMovies.Name = "dgvMovies";
             this.dgvMovies.ReadOnly = true;
             this.dgvMovies.RowHeadersVisible = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvMovies.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvMovies.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvMovies.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMovies.Size = new System.Drawing.Size(739, 108);
             this.dgvMovies.TabIndex = 1;
@@ -439,6 +428,7 @@
             // 
             // panel1
             // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.btnToggle);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -453,9 +443,9 @@
             this.btnToggle.FlatAppearance.BorderSize = 0;
             this.btnToggle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnToggle.Image = ((System.Drawing.Image)(resources.GetObject("btnToggle.Image")));
-            this.btnToggle.Location = new System.Drawing.Point(699, 0);
+            this.btnToggle.Location = new System.Drawing.Point(697, 0);
             this.btnToggle.Name = "btnToggle";
-            this.btnToggle.Size = new System.Drawing.Size(40, 29);
+            this.btnToggle.Size = new System.Drawing.Size(40, 27);
             this.btnToggle.TabIndex = 13;
             this.btnToggle.UseVisualStyleBackColor = true;
             this.btnToggle.Click += new System.EventHandler(this.btnToggle_Click);
@@ -483,6 +473,16 @@
             // 
             this.timerdgv.Interval = 30;
             this.timerdgv.Tick += new System.EventHandler(this.timerdgv_Tick);
+            // 
+            // listBactors
+            // 
+            this.listBactors.BackColor = System.Drawing.Color.Gold;
+            this.listBactors.FormattingEnabled = true;
+            this.listBactors.ItemHeight = 17;
+            this.listBactors.Location = new System.Drawing.Point(144, 273);
+            this.listBactors.Name = "listBactors";
+            this.listBactors.Size = new System.Drawing.Size(169, 89);
+            this.listBactors.TabIndex = 13;
             // 
             // CuMovies
             // 
@@ -545,10 +545,10 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Timer timerdgv;
         private System.Windows.Forms.Button btnActors;
-        private System.Windows.Forms.Button btnPlay;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cbGenre;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.ListBox listBactors;
     }
 }

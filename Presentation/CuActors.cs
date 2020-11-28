@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using DataAccess;
+using System.Drawing.Imaging;
 
 namespace Presentation
 {
@@ -25,7 +26,7 @@ namespace Presentation
         {
             InitializeComponent();
             lbActor.Parent = pbMainActor;
-
+            leftSidePanelActor.Width = 0;
             panelActorWidth = 406;
             hidden = true;
         }
@@ -35,8 +36,9 @@ namespace Presentation
         private void CuActors_Load(object sender, EventArgs e)
         {
            dgvActors.DataSource = actors.getActors();
-           // listBMovies.Hide();
-        }
+            listBMovies.Hide();
+
+         }
         public void cleanTxt()
         {
             txtNameActor.Clear();
@@ -73,6 +75,10 @@ namespace Presentation
         private void btnShowMovies_MouseMove(object sender, MouseEventArgs e)
         {
             listBMovies.Show();
+
+            listBMovies.Items.Clear();
+          
+            listBMovies.Items.Add(dgvActors.CurrentRow.Cells[5].Value.ToString());
         }
 
         private void btnShowMovies_MouseLeave(object sender, EventArgs e)
@@ -112,6 +118,13 @@ namespace Presentation
                 {
                     MessageBox.Show("Actor must to have a name");
                     return;
+                }
+
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    pbActor.Image.Save(ms, ImageFormat.Jpeg);
+                    file = ms.GetBuffer();
+
                 }
                 actors.editActor(idActor, txtNameActor.Text, dtpBirthday.Value,gender, file, rtMovies.Text);
                 MessageBox.Show("Done successfully", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);

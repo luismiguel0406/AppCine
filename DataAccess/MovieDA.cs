@@ -63,9 +63,9 @@ namespace DataAccess
             }
         }
         //editar pelicula
-        public void editMovie(int idMovie, string title, string genre, DateTime releaseDate, byte[] photo, string actors)
+        public void editMovie(int idMovie, string title, string genre, DateTime releaseDate, byte[]photo, string actors)
         {
-            photo = null;
+            
 
             using (var db = getConnection())
             {
