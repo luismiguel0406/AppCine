@@ -177,11 +177,8 @@ namespace Presentation
             edit = true;
             if (txtNameActor.Text.Trim().Equals(""))
             {
-                MessageBox.Show("Seleccione una fila", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-               /* if (dgvMoviePanel.Height <= 79)
-                {
-                    timerdgv.Start();
-                }*/
+                MessageBox.Show("Select a row", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+              
             }
             if (leftSidePanelActor.Width <= 406)
             {
