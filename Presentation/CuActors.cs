@@ -74,6 +74,7 @@ namespace Presentation
        
         private void btnShowMovies_MouseMove(object sender, MouseEventArgs e)
         {
+            listBMovies.BackColor = Color.Gold;
             listBMovies.Show();
 
             listBMovies.Items.Clear();
@@ -83,6 +84,7 @@ namespace Presentation
 
         private void btnShowMovies_MouseLeave(object sender, EventArgs e)
         {
+            listBMovies.BackColor = Color.Transparent;
             listBMovies.Hide();
         }
 

@@ -401,6 +401,8 @@ namespace Presentation
         {
             btnActors.BackColor = Color.Gold;
             listBactors.Show();
+            listBactors.Items.Clear();
+            listBactors.Items.Add(dgvMovies.CurrentRow.Cells[5].Value.ToString());
         }
 
         private void btnActors_MouseLeave(object sender, EventArgs e)
